@@ -1,0 +1,166 @@
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 380px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #0f1115;
+  color: #e6e8eb;
+  font-size: 13px;
+}
+
+body { padding: 12px; }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  background: linear-gradient(90deg, #25f4ee, #fe2c55);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.badge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.badge.idle     { background: #2a2f38; color: #9aa4b2; }
+.badge.running  { background: #10381f; color: #36d38a; }
+.badge.paused   { background: #3a2d10; color: #f7b955; }
+.badge.done     { background: #102a3a; color: #55b6f7; }
+.badge.error    { background: #3a1518; color: #ff6b6b; }
+.badge.captcha  { background: #3a1515; color: #ff5db1; }
+
+.card {
+  background: #171a21;
+  border: 1px solid #222732;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.file-label {
+  display: block;
+  padding: 10px;
+  border: 1px dashed #3a4150;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+.file-label:hover { border-color: #25f4ee; background: #12181e; }
+.file-label input[type="file"] { display: none; }
+
+.muted { color: #7e8796; font-size: 11px; margin-top: 6px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.field { display: flex; flex-direction: column; gap: 3px; }
+.field label { font-size: 11px; color: #9aa4b2; }
+.field input, .field select {
+  background: #0f1217;
+  border: 1px solid #2a303c;
+  color: #e6e8eb;
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  outline: none;
+}
+.field input:focus, .field select:focus { border-color: #25f4ee; }
+
+.progress .bar {
+  height: 8px;
+  background: #0b0d12;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+.progress .bar #progressFill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #25f4ee, #fe2c55);
+  transition: width .3s;
+}
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+#currentUser { margin-top: 8px; font-size: 12px; }
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.buttons button {
+  padding: 8px;
+  background: #1d222c;
+  color: #e6e8eb;
+  border: 1px solid #2a303c;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background .15s, border-color .15s;
+}
+.buttons button:hover:not(:disabled) { background: #252c38; border-color: #3a4252; }
+.buttons button:disabled { opacity: 0.45; cursor: not-allowed; }
+.buttons button.primary { background: linear-gradient(90deg, #25f4ee, #fe2c55); color: #0f1115; border: none; font-weight: 700; }
+.buttons button.danger { color: #ff6b6b; }
+
+.log-card { padding: 8px; }
+.log-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.log-header .mini {
+  background: transparent;
+  border: 1px solid #2a303c;
+  color: #9aa4b2;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.log {
+  height: 160px;
+  overflow-y: auto;
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 11px;
+  background: #0b0d12;
+  border-radius: 4px;
+  padding: 6px;
+  line-height: 1.5;
+}
+.log .row { display: flex; gap: 6px; }
+.log .t { color: #596273; min-width: 52px; }
+.log .u { color: #e6e8eb; flex: 1; word-break: break-all; }
+.log .s { font-weight: 600; }
+.log .s.followed        { color: #36d38a; }
+.log .s.already         { color: #7e8796; }
+.log .s.not_found       { color: #f7b955; }
+.log .s.captcha         { color: #ff5db1; }
+.log .s.error           { color: #ff6b6b; }
+.log .s.timeout         { color: #ff9955; }
+.log .s.info            { color: #55b6f7; }
