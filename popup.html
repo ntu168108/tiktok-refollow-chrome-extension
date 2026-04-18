@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>TikTok Re-Follow Helper</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <h1>TikTok Re-Follow</h1>
+    <span id="statusBadge" class="badge idle">Idle</span>
+  </header>
+
+  <section class="card">
+    <label class="file-label" for="fileInput">
+      <span id="fileLabelText">Chon file user_data_tiktok.json</span>
+      <input type="file" id="fileInput" accept="application/json,.json" />
+    </label>
+    <div id="loadInfo" class="muted"></div>
+  </section>
+
+  <section class="card grid">
+    <div class="field">
+      <label for="delayMin">Delay min (giay)</label>
+      <input type="number" id="delayMin" min="1" value="15" />
+    </div>
+    <div class="field">
+      <label for="delayMax">Delay max (giay)</label>
+      <input type="number" id="delayMax" min="1" value="35" />
+    </div>
+    <div class="field">
+      <label for="dailyCap">Daily cap</label>
+      <input type="number" id="dailyCap" min="1" value="150" />
+    </div>
+    <div class="field">
+      <label for="order">Thu tu</label>
+      <select id="order">
+        <option value="newest" selected>Moi nhat truoc</option>
+        <option value="oldest">Cu nhat truoc</option>
+        <option value="random">Ngau nhien</option>
+      </select>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="progress">
+      <div class="bar"><div id="progressFill"></div></div>
+      <div class="progress-text">
+        <span id="progressText">0 / 0</span>
+        <span id="dailyText" class="muted">0 / 0 hom nay</span>
+      </div>
+    </div>
+    <div id="currentUser" class="muted">Chua bat dau</div>
+  </section>
+
+  <section class="buttons">
+    <button id="btnStart" class="primary">Start</button>
+    <button id="btnPause">Pause</button>
+    <button id="btnResume">Resume</button>
+    <button id="btnReset" class="danger">Reset</button>
+    <button id="btnExport">Export report</button>
+  </section>
+
+  <section class="card log-card">
+    <div class="log-header">
+      <strong>Log</strong>
+      <button id="btnClearLog" class="mini">Clear</button>
+    </div>
+    <div id="log" class="log"></div>
+  </section>
+
+  <script src="popup.js"></script>
+</body>
+</html>
